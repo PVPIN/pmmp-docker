@@ -3,9 +3,8 @@ MAINTAINER wolfg1969 "wolfg1969@gmail.com"
 
 ENV REFRESHED_AT 201612231318
 
-RUN sed -i.bak s/archive/cn.archive/g /etc/apt/sources.list
 RUN apt-get -y update
-RUN apt-get -y install git curl wget
+RUN apt-get -y install git wget
 
 RUN mkdir /opt/pmmp
 RUN useradd -r pmmp
@@ -16,7 +15,6 @@ USER pmmp:pmmp
 RUN cd /opt/pmmp && wget -q -O - https://get.pmmp.io | bash -s - -v development
 
 ADD download-DevTools.sh /opt/pmmp/download-DevTools.sh
-# RUN chmod +x /opt/pmmp/download-DevTools.sh
 RUN mkdir /opt/pmmp/plugins
 RUN cd /opt/pmmp && sh download-DevTools.sh
 
