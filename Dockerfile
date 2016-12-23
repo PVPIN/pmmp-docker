@@ -1,16 +1,22 @@
-# Version 0.0.1
 FROM ubuntu:16.04
 MAINTAINER wolfg1969 "wolfg1969@gmail.com"
+
 ENV REFRESHED_AT 201612231318
+
 RUN sed -i.bak s/archive/cn.archive/g /etc/apt/sources.list
 RUN apt-get -y update
 RUN apt-get -y install git curl wget
 
-RUN mkdir /pmmp
-RUN cd /pmmp && wget -q -O - https://get.pmmp.io | bash -s - -r -v development
+RUN mkdir /opt/pmmp
+RUN useradd -r pmmp
+RUN chown -R pmmp:pmmp /opt/pmmp
 
-VOLUME /pmmp
-WORKDIR /pmmp
+USER pmmp:pmmp
+
+RUN cd /opt/pmmp && wget -q -O - https://get.pmmp.io | bash -s - -v development
+
+VOLUME /opt/pmmp
+WORKDIR /opt/pmmp
 
 EXPOSE 19132
 
