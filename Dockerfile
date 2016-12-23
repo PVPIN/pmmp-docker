@@ -15,6 +15,11 @@ USER pmmp:pmmp
 
 RUN cd /opt/pmmp && wget -q -O - https://get.pmmp.io | bash -s - -v development
 
+ADD download-DevTools.sh /opt/pmmp/download-DevTools.sh
+# RUN chmod +x /opt/pmmp/download-DevTools.sh
+RUN mkdir /opt/pmmp/plugins
+RUN cd /opt/pmmp && sh download-DevTools.sh
+
 VOLUME /opt/pmmp
 WORKDIR /opt/pmmp
 
