@@ -1,7 +1,7 @@
-FROM ubuntu:16.04
-MAINTAINER wolfg1969 "wolfg1969@gmail.com"
+FROM pvpin/ubuntu:latest
+MAINTAINER wolfg1969 "wolfg1969@qq.com"
 
-ENV REFRESHED_AT 201612231318
+ENV REFRESHED_AT 20170112
 
 RUN apt-get -y update
 RUN apt-get -y install git wget
