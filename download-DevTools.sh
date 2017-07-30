@@ -1,6 +1,6 @@
 #/bin/bash
 
-VERSION_DATA=$(wget -q -O - "https://jenkins.pmmp.io/job/PocketMine-MP%20DevTools/lastSuccessfulBuild/api/json?pretty=true&tree=url,artifacts[fileName],number,timestamp")
+VERSION_DATA=$(wget -q -O - "https://jenkins.pmmp.io/job/PocketMine-MP-Dev/lastSuccessfulBuild/api/json?pretty=true&tree=url,artifacts[fileName],number,timestamp")
 
 FILENAME=$(echo "$VERSION_DATA" | grep '"fileName"' | cut -d ':' -f2- | tr -d ' ",')
 VERSION=$(echo $FILENAME | cut -d '_' -f2- | cut -d '-' -f1)
